@@ -1,10 +1,17 @@
-# Water-Tank-Reinforcement-Learning-Environment-Model
+# Water Tank Reinforcement Learning Control
 
-An open demo from Mathworks `openExample('rl/WaterTankEnvironmentModelExample')` lacking the agent.
+This repo is about an open demo from MathWorks `openExample('rl/WaterTankEnvironmentModelExample')`.  
+The agent is not well-defined by Mathworks and will be decided in this repo.
 
+## 1. Simulink settings in agent
 
-The agent is gigen in this repo.
+![image](https://github.com/user-attachments/assets/670591df-5af6-4dc2-9923-7f9360a83dd3)
 
+The observation, reward, and isdone are specified in Simulink.  
+This [document](https://se.mathworks.com/help/reinforcement-learning/ug/water-tank-simulink-reinforcement-learning-environment.html), from MathWorks,
+ details the specifications and the desinations of each block in the Simulink.
+
+Interestingly, the system dynamics are not explicit for the controller; the RL-based controller is not relying on the model.
 
 ![image](https://github.com/user-attachments/assets/27327c28-a712-4297-a672-c125a8da7663)
 ![image](https://github.com/user-attachments/assets/1385b67c-91ff-4226-8324-97ccc5128c73)

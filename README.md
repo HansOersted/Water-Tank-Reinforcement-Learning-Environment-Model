@@ -27,8 +27,42 @@ The rest two arguments, `env` and `agent`, are specified in the next two section
 
 ## 3. Environment setting (`env`)
 
+`env` specifies the observation information and the action information.  
+These two informations include the upper and lower bounds, dimensions, etc.
 
+## 4. Agent setting (`agent`)
 
+The agent in this repo uses DDPG policy. It is initialized with
+
+```
+agent = rlDDPGAgent(actor, critic, agentOptions);
+```
+
+`actor` and `critic` are equipped based on Neural Networks to take actions and make evaluations, respectively.
+
+```
+actor = rlContinuousDeterministicActor(actorNetwork, observationInfo, actionInfo);
+```
+
+```
+critic = rlQValueFunction(criticNetwork, observationInfo, actionInfo);
+```
+
+Note that `Q` value is calculated based on the current state and action.   
+And it is calculated by combining action and state.
+
+```
+criticNet = connectLayers(criticNet, 'criticRelu1', 'add/in1');
+criticNet = connectLayers(criticNet, 'criticActionFC1', 'add/in2');
+```
+
+## 5. Simulation result
+
+The tracking result is visualized in the figure below.  
+The response contains the oscillations and overshoot, which can be avoided by the further tune on the Neural Network.
 
 ![image](https://github.com/user-attachments/assets/27327c28-a712-4297-a672-c125a8da7663)
+
+The training history can be traced below.
+
 ![image](https://github.com/user-attachments/assets/1385b67c-91ff-4226-8324-97ccc5128c73)
